@@ -14,6 +14,15 @@ tsc
 LAMBDA_LAYER_ARN=XXXX
 LAMBDA_FUNCTION_ARN=XXXXX
 
-#Run deploy.sh
+# Compile TSC files first
+yarn
+tsc .
+
+# Switch to production
+
+rm -r node_modules/
+NODE_ENV=production yarn install
+
+#Run deploy.sh to push layers and code
 ./deploy.sh
 ```
